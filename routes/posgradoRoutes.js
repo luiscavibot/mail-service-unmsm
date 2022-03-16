@@ -1,12 +1,11 @@
+const { Router } = require("express");
 
-const { Router } = require('express');
-
-const { PosgradoMailingController } = require('../controllers/usuarios');
+const {
+  posgradoMailingController,
+} = require("../controllers/posgradoControllers");
 
 const router = Router();
 
-
-router.post('/', usuariosPost );
-
+router.post("/", posgradoMailingController);
 
 module.exports = router;
