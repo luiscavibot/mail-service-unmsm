@@ -12,13 +12,15 @@ const posgradoMailingController = (req, res = response) => {
     asunto,
   } = req.body;
 
+  const destinatario = "lilyevantter@gmail.com";
   enviarCorreoConsultaDesdeHomePosgrado(
     areaInteres,
     programa,
     correoElectronico,
     nombreApellido,
     mensaje,
-    asunto
+    asunto,
+    destinatario
   ).catch(console.error);
 
   res.json({ mnsj: "Mensaje enviado" });
