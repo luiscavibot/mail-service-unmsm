@@ -1,5 +1,6 @@
 const {
 	enviarCorreoConsultaDesdeHomePosgrado,
+	enviarCorreoConsultaDesdePrograma,
 } = require('../helpers/enviarCorreo');
 
 const posgradoMailingController = (req, res = response) => {
@@ -30,6 +31,20 @@ const posgradoMailingController = (req, res = response) => {
 	});
 };
 
+const posgradoMailingDosController = (req, res = response) => {
+	const { programa, correo } = req.body;
+	console.log(programa, correo);
+	const destinatario = 'lilyevantter@gmail.com';
+	enviarCorreoConsultaDesdePrograma(programa, correo, destinatario).catch(
+		console.error
+	);
+
+	res.json({
+		mnsj: 'La información fue recibida correctamente en la App de correos',
+	});
+};
+
 module.exports = {
 	posgradoMailingController,
+	posgradoMailingDosController,
 };

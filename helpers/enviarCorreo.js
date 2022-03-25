@@ -73,7 +73,38 @@ const enviarCorreoConsultaDesdeHomePosgrado = async (
     	`, // html body
 	});
 };
-
+const enviarCorreoConsultaDesdePrograma = async (
+	programa,
+	correoElectronico,
+	destinatario
+) => {
+	const userName = '✅ Dirección de Estudios de Posgrado';
+	const transporter = nodemailer.createTransport({
+		host: 'smtp.gmail.com',
+		port: 465,
+		secure: true,
+		auth: {
+			user: `${user}`,
+			pass: `${pass}`,
+		},
+	});
+	await transporter.sendMail({
+		from: `"${userName}"`, // sender address
+		to: `${destinatario}`, // list of receivers
+		subject: 'Consulta desde web de Estudios de Posgrado', // Subject line
+		html: `
+			<p>Estimada Unidad de Posgrado de la Facultad:</p>
+			<p>Un usuario del sitio web de Estudios de Posgrado de la UNMSM, identificado con correo <a href="mailto:${correoElectronico},">${correoElectronico},</a>&nbsp;ha solicitado informaci&oacute;n acerca del programa&nbsp;<strong>${programa}.</strong></p>
+			<p>Por favor, s&iacute;rvase a remitir el brochure de dicho programa al correo se&ntilde;alado.</p>
+			<p>Saludos cordiales.</p>
+			<p>&nbsp;</p>
+			<p>Att.</p>
+			<h4><em>Aplicaci&oacute;n de correos autom&aacute;ticos de la OGII.</em></h4>
+			<h4><em>Direcci&oacute;n General de Estudios de Posgrado.</em></h4>
+    	`, // html body
+	});
+};
 module.exports = {
 	enviarCorreoConsultaDesdeHomePosgrado,
+	enviarCorreoConsultaDesdePrograma,
 };
