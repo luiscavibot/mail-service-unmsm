@@ -75,8 +75,9 @@ const enviarCorreoConsultaDesdeHomePosgrado = async (
 };
 const enviarCorreoConsultaDesdePrograma = async (
 	programa,
-	correoElectronico,
-	destinatario
+	correo,
+	correoContacto,
+	tipoDePrograma
 ) => {
 	const userName = '✅ Dirección de Estudios de Posgrado';
 	const transporter = nodemailer.createTransport({
@@ -90,18 +91,14 @@ const enviarCorreoConsultaDesdePrograma = async (
 	});
 	await transporter.sendMail({
 		from: `"${userName}"`, // sender address
-		to: `${destinatario}`, // list of receivers
-		subject: 'Consulta desde web de Estudios de Posgrado', // Subject line
+		to: `${correo}`, // list of receivers
+		cc: `${correoContacto}`,
+		subject: `Brochure de ${tipoDePrograma} en ${programa} - UNMSM`, // Subject line
 		html: `
-			<p>Estimada Unidad de Posgrado de la Facultad:</p>
-			<p>Un usuario del sitio web de Estudios de Posgrado de la UNMSM, identificado con correo <a href="mailto:${correoElectronico},">${correoElectronico},</a>&nbsp;ha solicitado informaci&oacute;n acerca del programa&nbsp;<strong>${programa}.</strong></p>
-			<p>Por favor, s&iacute;rvase a remitir el brochure de dicho programa al correo se&ntilde;alado.</p>
-			<p>Saludos cordiales.</p>
-			<p>&nbsp;</p>
-			<p>Att.</p>
-			<h4><em>Aplicaci&oacute;n de correos autom&aacute;ticos de la OGII.</em></h4>
-			<h4><em>Direcci&oacute;n General de Estudios de Posgrado.</em></h4>
-    	`, // html body
+			<p>Estimado(a) usuario(a) a continuación le adjuntamos el brochure solicitado:</p>
+			<p>Puede comunicarse al siguiente correo para más consultas: <span>${correoContacto}</span></p>
+			<i>No conteste este correo</i>
+			`, // html body
 	});
 };
 module.exports = {
