@@ -1,8 +1,8 @@
 const { response, request } = require('express');
 const nodemailer = require('nodemailer');
 
-const user = process.env.APP_USER;
-const pass = process.env.APP_PASS;
+// const user = process.env.APP_USER;
+// const pass = process.env.APP_PASS;
 
 const enviarCorreoConsultaDesdeHomePosgrado = async (
 	areaInteres,
@@ -11,7 +11,7 @@ const enviarCorreoConsultaDesdeHomePosgrado = async (
 	nombreApellido,
 	mensaje,
 	asunto,
-	destinatario,
+	correContacto,
 	autorizacion
 ) => {
 	const userName = '✅ Dirección de Estudios de Posgrado';
@@ -20,16 +20,16 @@ const enviarCorreoConsultaDesdeHomePosgrado = async (
 		port: 465,
 		secure: true,
 		auth: {
-			user: `${user}`,
-			pass: `${pass}`,
+			user: `${process.env.APP_USER}`,
+			pass: `${process.env.APP_PASS}`,
 		},
 	});
 	await transporter.sendMail({
 		from: `"${userName}"`, // sender address
-		to: `${destinatario}`, // list of receivers
+		to: `${correContacto}`, // list of receivers
 		subject: 'Consulta desde web de Estudios de Posgrado', // Subject line
 		html: `
-			<h4>Estimada, Unidad de Posgrado de la Facultad:</h4>
+			<h4>Estimada, Unidad de Posgrado de la Facultad de ${areaInteres}:</h4>
 			<h4>El usuario&nbsp;<span style="color: #000080;"><strong>${nombreApellido}</strong>&nbsp;</span>ha consultado, a trav&eacute;s del sitio web de Estudios de Posgrado, lo siguiente:</h4>
 			<table>
 			<tbody>
@@ -84,8 +84,8 @@ const enviarCorreoConsultaDesdePrograma = async (
 		port: 465,
 		secure: true,
 		auth: {
-			user: `${user}`,
-			pass: `${pass}`,
+			user: `${process.env.APP_USER}`,
+			pass: `${process.env.APP_PASS}`,
 		},
 	});
 	await transporter.sendMail({

@@ -11,10 +11,12 @@ const posgradoMailingController = (req, res = response) => {
 		nombreApellido,
 		mensaje,
 		asunto,
+		correoContacto,
 		autorizacion,
 	} = req.body;
+	console.log('req.body', req.body);
+	// const destinatario = 'lilyevantter@gmail.com';
 
-	const destinatario = 'lilyevantter@gmail.com';
 	enviarCorreoConsultaDesdeHomePosgrado(
 		areaInteres,
 		programa,
@@ -22,7 +24,7 @@ const posgradoMailingController = (req, res = response) => {
 		nombreApellido,
 		mensaje,
 		asunto,
-		destinatario,
+		correoContacto,
 		autorizacion
 	).catch(console.error);
 
