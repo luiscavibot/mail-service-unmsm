@@ -7,6 +7,7 @@ class Server {
 		this.port = process.env.PORT;
 		// this.usuariosPath = '/api/usuarios';
 		this.posgradoPath = '/api/posgrado';
+		this.facultadesPath = '/api/facultades';
 
 		// Middlewares
 		this.middlewares();
@@ -28,6 +29,7 @@ class Server {
 
 	routes() {
 		this.app.use(this.posgradoPath, require('../routes/posgradoRoutes'));
+		this.app.use(this.facultadesPath, require('../routes/facultadesRoutes'));
 	}
 
 	listen() {
