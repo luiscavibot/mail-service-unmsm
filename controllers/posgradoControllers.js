@@ -1,7 +1,7 @@
 const {
 	enviarCorreoConsultaDesdeHomePosgrado,
 	enviarCorreoConsultaDesdePrograma,
-} = require('../helpers/enviarCorreo');
+} = require('../helpers/sendMail');
 
 const posgradoMailingController = (req, res = response) => {
 	const {

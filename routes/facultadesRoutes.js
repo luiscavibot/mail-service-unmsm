@@ -6,6 +6,6 @@ const {
 
 const router = Router();
 
-router.post('/informacion-contacto-desde-escuela', facultadesMailingController);
+router.post('/', facultadesMailingController);
 
 module.exports = router;
