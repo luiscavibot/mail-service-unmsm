@@ -6,7 +6,7 @@ const facultadesMailingController = (req, res = response) => {
 		userMail,
 		userSubject,
 		userMessage,
-		responsableMail,
+		responsableEmail,
 		facultad,
 		escuela,
 		templateType,
@@ -18,7 +18,7 @@ const facultadesMailingController = (req, res = response) => {
 			userMail,
 			userSubject,
 			userMessage,
-			responsableMail,
+			responsableEmail,
 			facultad,
 			escuela,
 			templateType

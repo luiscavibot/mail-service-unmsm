@@ -10,7 +10,7 @@ const sendMailToResponsable = async (
 	userMail,
 	userSubject,
 	userMessage,
-	responsableMail,
+	responsableEmail,
 	facultad,
 	escuela,
 	templateType
@@ -35,7 +35,7 @@ const sendMailToResponsable = async (
 	});
 	await transporter.sendMail({
 		from: `"${process.env.MAILING_USERNAME}"`,
-		to: `${responsableMail}`,
+		to: `${responsableEmail}`,
 		subject: `Consulta desde web de la Facultad de ${facultad}`,
 		html: mailContent,
 	});
